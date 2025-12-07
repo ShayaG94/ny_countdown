@@ -1,45 +1,125 @@
-body, html {
+/* Reset */
+* {
   margin: 0;
   padding: 0;
-  height: 100%;
-  font-family: Arial, sans-serif;
-  color: white;
-  text-align: center;
+  box-sizing: border-box;
 }
 
-.background {
-  background: linear-gradient(to right, #1e3c72, #2a5298);
+html, body {
   height: 100%;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #0b2337;
+  background: linear-gradient(135deg, #a0e9ff, #7cd1ff, #69f0ae);
+  background-size: 200% 200%;
+  animation: softGradient 18s ease infinite;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+/* Background animation */
+@keyframes softGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Container */
+.background {
+  text-align: center;
+  width: 100%;
+  max-width: 1100px;
+  padding: 20px;
+}
+
+/* Countdown */
 .counter-container h1 {
-  font-size: 2em;
-  margin-bottom: 20px;
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #0b2337;
 }
 
 #countdown {
-  font-size: 3em;
-  font-weight: bold;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #0b2337;
+  margin-bottom: 28px;
 }
 
+/* Carousel layout */
 .carousel-container {
-  margin-top: 50px;
-  width: 80%;
+  position: relative;
+  width: 92%;
+  max-width: 900px;
+  margin: 0 auto;
   overflow: hidden;
+  padding: 0 10px;
 }
 
 .carousel {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  gap: 20px;
+  transition: transform 0.5s ease;
+  will-change: transform;
 }
 
-.carousel img {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  border-radius: 10px;
+/* Slides */
+.slide {
+  flex: 0 0 auto;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.slide img {
+  display: block;
+  width: min(70vw, 800px);
+  height: auto;
+  max-height: 430px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  transform: scale(0.85);
+  opacity: 0.6;
+}
+
+/* Active and neighbor hints */
+.slide.active img {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.slide.prev img,
+.slide.next img {
+  transform: scale(0.92);
+  opacity: 0.85;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .counter-container h1 {
+    font-size: 1.8rem;
+  }
+  #countdown {
+    font-size: 1.6rem;
+  }
+  .slide img {
+    width: min(86vw, 680px);
+    max-height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .counter-container h1 {
+    font-size: 1.6rem;
+  }
+  #countdown {
+    font-size: 1.4rem;
+  }
+  .slide img {
+    width: min(92vw, 560px);
+    max-height: 260px;
+  }
 }
