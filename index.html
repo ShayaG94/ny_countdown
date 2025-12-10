@@ -1,32 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Shaya in New York</title>
+  <meta charset="UTF-8" />
+  <title>Shaya in New York — Moments</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="A curated, stylish gallery of moments, with countdown and effortless uploads." />
+
+  <!-- Fonts and icons -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="background">
-    <div class="counter-container">
-      <h1>Shaya in New York</h1>
-      <div id="countdown"></div>
-    </div>
-
-    <div class="carousel-container">
-      <div class="carousel" id="carousel"></div>
-    </div>
-
-    <!-- Upload button -->
-    <div class="upload-container">
-      <form id="uploadForm" enctype="multipart/form-data" method="POST" action="/upload">
-        <button type="button" id="uploadBtn">Upload Pictures</button>
-        <input type="file" name="file" id="fileInput" accept="image/*" multiple style="display: none;">
-    </form>
-      <div id="uploadStatus"></div>
-    </div>
+  <div class="aurora-bg" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
   </div>
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark"></span>
+      <span class="brand-name">Shaya in New York</span>
+    </div>
+    <nav class="site-actions">
+      <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">
+        <i class="ri-sun-line" id="themeIcon"></i>
+      </button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="panel glass hero">
+      <h1 class="hero-title">Counting down to the next adventure</h1>
+      <p class="hero-sub">Time left until you touch down in New York</p>
+      <div id="countdown" class="countdown" aria-live="polite">Loading…</div>
+    </section>
+
+    <section class="panel glass gallery">
+      <div class="gallery-header">
+        <h2 class="section-title">October Moments</h2>
+        <div class="gallery-controls">
+          <button class="pill-btn" id="prevBtn" aria-label="Previous"><i class="ri-arrow-left-line"></i></button>
+          <button class="pill-btn" id="nextBtn" aria-label="Next"><i class="ri-arrow-right-line"></i></button>
+        </div>
+      </div>
+
+      <div class="carousel-wrap">
+        <div id="carousel" class="carousel" aria-label="Image carousel"></div>
+      </div>
+
+      <div class="carousel-dots" id="carouselDots" aria-hidden="true"></div>
+    </section>
+
+    <section class="panel glass uploader">
+      <h2 class="section-title">Add new pictures</h2>
+      <p class="subtext">Effortless uploads. Your gallery updates instantly.</p>
+      <div class="upload-row">
+        <button class="cta-btn" id="uploadBtn">
+          <i class="ri-upload-2-line"></i>
+          Upload pictures
+        </button>
+        <input type="file" id="fileInput" name="file" accept="image/*" multiple style="display:none" />
+        <div id="uploadStatus" class="upload-status" role="status" aria-live="polite"></div>
+      </div>
+      <blockquote class="tip">Tip: Drag the page edges to see the layout breathe. Use arrow keys to navigate the carousel.</blockquote>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>Crafted with care</span>
+      <span class="dot">•</span>
+      <a href="#" class="link">Design system v1.0</a>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
